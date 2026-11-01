@@ -1,22 +1,13 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  UserRound,
-  ShieldCheck,
-  Scale,
-  FileText,
-  CheckCircle2,
-  Award,
-  Briefcase,
-  ChevronRight,
-} from "lucide-react";
-import { Kicker, PageHeader, Section } from "@/components/site/Layout";
+import { createFileRoute } from "@tanstack/react-router";
+import { UserRound } from "lucide-react";
+import { PageHeader, Section } from "@/components/site/Layout";
 import { SpotlightCard } from "@/components/reactbits/SpotlightCard";
 import { createPageMeta, BRAND_NAME } from "@/lib/seo";
 
 export const Route = createFileRoute("/governance")({
   head: () =>
     createPageMeta({
-      title: "Corporate Governance & Advisory Board — Executive Leadership",
+      title: "Corporate Governance & Advisory Board — Leadership",
       description:
         "Meet the executive leadership and advisory board of Aura Dynamics Enterprises Private Limited. Institutional governance, technical stewardship, and financial integrity.",
       canonicalPath: "/governance",
@@ -27,21 +18,18 @@ export const Route = createFileRoute("/governance")({
 const ADVISORY_BOARD = [
   {
     role: "Strategic Business & Scaling Advisor",
-    pillar: "Enterprise Growth",
     experience: "15+ Years Industry Leadership",
     text: "Provides strategic guidance on institutional go-to-market roadmaps, operational scaling across complex regional demographics, and establishing nationwide commercial partnerships.",
     expertise: ["Pan-India Distribution", "Venture Growth Models", "Municipal Partnerships"],
   },
   {
     role: "Technology & Systems Architecture Mentor",
-    pillar: "Engineering Stewardship",
     experience: "Veteran Cloud Infrastructure Architect",
     text: "Guides our software engineering division on zero-trust cybersecurity protocols, resilient microservices topologies, and sub-second transaction throughput under extreme load.",
     expertise: ["Distributed Systems", "Zero-Trust Security", "Real-Time Event Processing"],
   },
   {
     role: "Financial & Corporate Compliance Strategist",
-    pillar: "Statutory Governance",
     experience: "Corporate Finance & Regulatory Expert",
     text: "Ensures comprehensive audit compliance, adherence to the Companies Act 2013, Reserve Bank of India payment guidelines, and transparent fiduciary reporting.",
     expertise: ["Regulatory Compliance", "Fiduciary Auditing", "Risk Management"],
@@ -73,12 +61,9 @@ function Portrait({ title }: { title: string }) {
         <div className="flex h-20 w-20 items-center justify-center rounded-full border border-border/80 bg-surface/80 text-primary shadow-inner transition-transform group-hover:scale-105">
           <UserRound className="h-10 w-10 text-primary/70" strokeWidth={1.5} />
         </div>
-        <span className="mt-4 font-display text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-          Executive Dossier
+        <span className="mt-4 font-display text-xs font-medium text-muted-foreground">
+          Executive Portrait
         </span>
-      </div>
-      <div className="absolute bottom-3 right-3 rounded-xs border border-border/60 bg-background/90 px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
-        Aura Dynamics
       </div>
     </div>
   );
@@ -89,18 +74,17 @@ function Governance() {
     <>
       <PageHeader
         crumb="Governance & Advisors"
-        title="Corporate Governance & Executive Leadership."
-        sub="Anchored by visionary leadership, guided by industry veterans, and committed to institutional transparency."
+        title="Corporate Governance & Leadership"
+        sub="Guided by visionary leadership, experienced advisors, and commitment to institutional transparency."
       />
 
-      {/* EXECUTIVE LEADERSHIP SECTION */}
+      {/* EXECUTIVE LEADERSHIP */}
       <Section>
-        <Kicker>Executive Board</Kicker>
         <h2 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl">
-          Office of the Managing Director & Chief Executive Officer
+          Executive Leadership
         </h2>
         <p className="mt-4 max-w-3xl text-base text-muted-foreground">
-          The strategic roadmap, day-to-day operations, banking covenants, and technological
+          The strategic roadmap, day-to-day operations, banking relationships, and technological
           execution of {BRAND_NAME} are stewarded by our founding Managing Director and executive
           officers.
         </p>
@@ -110,12 +94,7 @@ function Governance() {
 
           <div className="flex flex-col justify-between">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-xs border border-primary/20 bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
-                <Award className="h-3.5 w-3.5" />
-                <span>Founding Promoter & Director</span>
-              </div>
-
-              <h3 className="mt-4 text-3xl font-medium tracking-tight text-foreground">
+              <h3 className="text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
                 Managing Director & Chief Executive Officer
               </h3>
               <p className="mt-1 text-sm font-medium text-primary">
@@ -140,35 +119,28 @@ function Governance() {
 
             <div className="mt-8 grid grid-cols-2 gap-4 border-t border-border pt-6 sm:grid-cols-3">
               <div>
-                <span className="text-xs uppercase tracking-wider text-muted-foreground">
-                  Executive Mandate
-                </span>
+                <span className="text-xs font-medium text-muted-foreground">Executive Mandate</span>
                 <p className="mt-1 text-sm font-semibold text-foreground">Strategic Stewardship</p>
               </div>
               <div>
-                <span className="text-xs uppercase tracking-wider text-muted-foreground">
-                  Operational Base
-                </span>
-                <p className="mt-1 text-sm font-semibold text-foreground">Patna Headquarters</p>
+                <span className="text-xs font-medium text-muted-foreground">Headquarters</span>
+                <p className="mt-1 text-sm font-semibold text-foreground">Patna, Bihar</p>
               </div>
               <div className="col-span-2 sm:col-span-1">
-                <span className="text-xs uppercase tracking-wider text-muted-foreground">
-                  Jurisdiction
-                </span>
-                <p className="mt-1 text-sm font-semibold text-foreground">PAN-India Scale</p>
+                <span className="text-xs font-medium text-muted-foreground">Operational Scope</span>
+                <p className="mt-1 text-sm font-semibold text-foreground">PAN-India</p>
               </div>
             </div>
           </div>
         </div>
       </Section>
 
-      {/* ADVISORY BOARD SECTION */}
+      {/* ADVISORY BOARD */}
       <section className="border-y border-border bg-surface/70 py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="max-w-2xl">
-            <Kicker>External Counsel & Mentorship</Kicker>
             <h2 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl">
-              The Board of Advisors
+              Board of Advisors
             </h2>
             <p className="mt-4 text-base text-muted-foreground">
               Our executive team is counseled by independent specialists with deep domain experience
@@ -190,10 +162,7 @@ function Governance() {
                   </div>
 
                   <div className="mt-6">
-                    <span className="font-display text-xs font-semibold uppercase tracking-wider text-primary">
-                      {adv.pillar}
-                    </span>
-                    <h3 className="mt-2 text-xl font-medium text-foreground">{adv.role}</h3>
+                    <h3 className="text-lg font-medium text-foreground">{adv.role}</h3>
                     <p className="mt-1 text-xs font-medium text-muted-foreground">
                       {adv.experience}
                     </p>
@@ -202,14 +171,14 @@ function Governance() {
                 </div>
 
                 <div className="mt-8 border-t border-border/60 pt-4">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                    Core Focus Areas:
+                  <span className="text-xs font-medium text-muted-foreground">
+                    Areas of Expertise:
                   </span>
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {adv.expertise.map((exp) => (
                       <span
                         key={exp}
-                        className="rounded-xs border border-border bg-card px-2 py-0.5 text-[10px] font-medium text-foreground/80"
+                        className="rounded-xs border border-border bg-card px-2 py-0.5 text-xs text-foreground/80"
                       >
                         {exp}
                       </span>
@@ -222,13 +191,12 @@ function Governance() {
         </div>
       </section>
 
-      {/* CORPORATE GOVERNANCE CHARTER */}
+      {/* CORPORATE GOVERNANCE FRAMEWORK */}
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
           <div>
-            <Kicker>Institutional Code</Kicker>
-            <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl">
-              Corporate Governance Charter
+            <h2 className="text-3xl font-medium leading-tight tracking-tight text-foreground md:text-4xl">
+              Corporate Governance Framework
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
               Aura Dynamics upholds corporate governance standards consistent with Tier-1 holding

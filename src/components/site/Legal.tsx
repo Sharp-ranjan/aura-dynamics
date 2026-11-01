@@ -1,6 +1,5 @@
 import React from "react";
 import { PageHeader, Section } from "./Layout";
-import { ShieldCheck, Scale, FileText } from "lucide-react";
 import { BRAND_NAME } from "@/lib/seo";
 
 export interface LegalSection {
@@ -24,16 +23,12 @@ export function LegalPage({
       <PageHeader
         crumb={title}
         title={title}
-        sub={`${BRAND_NAME} · Statutory Disclosure · Effective Date: ${lastUpdated}`}
+        sub={`${BRAND_NAME} · Statutory Disclosure · Effective ${lastUpdated}`}
       />
       <Section>
         <div className="mx-auto max-w-4xl">
-          <div className="mb-10 rounded-sm border border-border/80 bg-surface/50 p-6">
-            <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-wider text-primary">
-              <ShieldCheck className="h-4 w-4" />
-              <span>Official Corporate Instrument</span>
-            </div>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{subtitle}</p>
+          <div className="mb-12 border-b border-border pb-8">
+            <p className="text-base leading-relaxed text-muted-foreground">{subtitle}</p>
           </div>
 
           <div className="space-y-12">
@@ -51,7 +46,7 @@ export function LegalPage({
             ))}
           </div>
 
-          <div className="mt-14 rounded-sm border border-border bg-card p-6 text-xs text-muted-foreground">
+          <div className="mt-14 border-t border-border pt-8 text-xs text-muted-foreground">
             <p className="font-semibold text-foreground">Legal & Regulatory Division</p>
             <p className="mt-1">Aura Dynamics Enterprises Private Limited · Patna, Bihar, India</p>
             <p className="mt-0.5">
