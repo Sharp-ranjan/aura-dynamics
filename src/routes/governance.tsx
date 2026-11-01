@@ -1,179 +1,220 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ShieldCheck, Scale, Award, FileCheck2, ArrowRight } from "lucide-react";
-import { PageHeader, Reveal } from "@/components/site/primitives";
-import { seo } from "@/lib/seo";
-import { BorderBeam, Crosshair, SpotlightCard, Magnet } from "@/components/reactbits";
-import { Button } from "@/components/ui/button";
+import {
+  UserRound,
+  ShieldCheck,
+  Scale,
+  FileText,
+  CheckCircle2,
+  Award,
+  Briefcase,
+  ChevronRight,
+} from "lucide-react";
+import { Kicker, PageHeader, Section } from "@/components/site/Layout";
+import { SpotlightCard } from "@/components/reactbits/SpotlightCard";
+import { createPageMeta, BRAND_NAME } from "@/lib/seo";
 
 export const Route = createFileRoute("/governance")({
   head: () =>
-    seo(
-      "Governance & Advisors",
-      "Corporate governance, executive leadership, and the board of advisors guiding Aura Dynamics Private Limited.",
-      "/governance",
-    ),
+    createPageMeta({
+      title: "Corporate Governance & Advisory Board — Executive Leadership",
+      description:
+        "Meet the executive leadership and advisory board of Aura Dynamics Enterprises Private Limited. Institutional governance, technical stewardship, and financial integrity.",
+      canonicalPath: "/governance",
+    }),
   component: Governance,
 });
 
-const ADVISORS = [
+const ADVISORY_BOARD = [
   {
     role: "Strategic Business & Scaling Advisor",
-    exp: "15+ Years Experience",
-    note: "Specializing in multi-region venture expansion, franchise/partner network rollouts, and unit-economics optimization across emerging Indian markets.",
-    tags: ["Go-to-Market", "Venture Scaling", "Institutional Partnerships"],
+    pillar: "Enterprise Growth",
+    experience: "15+ Years Industry Leadership",
+    text: "Provides strategic guidance on institutional go-to-market roadmaps, operational scaling across complex regional demographics, and establishing nationwide commercial partnerships.",
+    expertise: ["Pan-India Distribution", "Venture Growth Models", "Municipal Partnerships"],
   },
   {
-    role: "Technology & Architecture Mentor",
-    exp: "Veteran Systems Architect",
-    note: "Advising on zero-trust cybersecurity protocols, resilient microservices topologies, and distributed cloud meshes engineered for national throughput.",
-    tags: ["Zero-Trust Security", "Distributed Systems", "Cloud Governance"],
+    role: "Technology & Systems Architecture Mentor",
+    pillar: "Engineering Stewardship",
+    experience: "Veteran Cloud Infrastructure Architect",
+    text: "Guides our software engineering division on zero-trust cybersecurity protocols, resilient microservices topologies, and sub-second transaction throughput under extreme load.",
+    expertise: ["Distributed Systems", "Zero-Trust Security", "Real-Time Event Processing"],
   },
   {
-    role: "Financial & Statutory Compliance Strategist",
-    exp: "Senior Corporate Finance Counsel",
-    note: "Providing institutional direction across MCA-21 statutory filings, direct/indirect tax compliance, financial audit integrity, and institutional debt/equity capitalization.",
-    tags: ["Statutory Compliance", "Tax Governance", "Institutional Capital"],
+    role: "Financial & Corporate Compliance Strategist",
+    pillar: "Statutory Governance",
+    experience: "Corporate Finance & Regulatory Expert",
+    text: "Ensures comprehensive audit compliance, adherence to the Companies Act 2013, Reserve Bank of India payment guidelines, and transparent fiduciary reporting.",
+    expertise: ["Regulatory Compliance", "Fiduciary Auditing", "Risk Management"],
   },
 ];
 
-const COMPLIANCE_PILLARS = [
+const GOVERNANCE_CHARTER = [
   {
-    title: "Ministry of Corporate Affairs (MCA)",
-    desc: "Strict adherence to the Companies Act, 2013, with active filings, statutory registers, and board minutes maintained under formal secretarial audit.",
+    title: "Statutory & Regulatory Alignment",
+    desc: "Rigorous compliance with the Ministry of Corporate Affairs (MCA), Companies Act 2013, and applicable state commercial directives in Bihar and nationwide.",
   },
   {
-    title: "Digital Personal Data Protection Act, 2023",
-    desc: "Full institutional data fiduciary compliance: zero consumer-data monetization, purpose-limited data collection, and robust citizen consent frameworks.",
+    title: "Fiduciary Responsibility & Audit Trail",
+    desc: "Uncompromising financial clarity with independent statutory auditors and transparent governance protocols separating corporate reserves from operational venture capital.",
   },
   {
-    title: "Financial Rails & Payment Settlements",
-    desc: "Architected to interface directly with RBI-regulated banking partners and escrow mechanisms for transparent, verifiable vendor payouts.",
-  },
-  {
-    title: "Intellectual Property Safeguards",
-    desc: "All source code, platform architectures, and brand identifiers protected under the Indian Copyright Act, 1957 and Trademarks Act, 1999.",
+    title: "Zero-Tolerance Ethical Code",
+    desc: "Comprehensive anti-bribery, conflict of interest, and data privacy charters binding all directors, advisors, officers, and technical personnel.",
   },
 ];
+
+function Portrait({ title }: { title: string }) {
+  return (
+    <div
+      className="group relative flex aspect-[4/5] w-full items-center justify-center overflow-hidden rounded-sm border border-border bg-gradient-to-b from-surface via-card to-background p-6 shadow-sm"
+      aria-label={title}
+    >
+      <div className="flex flex-col items-center justify-center text-center">
+        <div className="flex h-20 w-20 items-center justify-center rounded-full border border-border/80 bg-surface/80 text-primary shadow-inner transition-transform group-hover:scale-105">
+          <UserRound className="h-10 w-10 text-primary/70" strokeWidth={1.5} />
+        </div>
+        <span className="mt-4 font-display text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          Executive Dossier
+        </span>
+      </div>
+      <div className="absolute bottom-3 right-3 rounded-xs border border-border/60 bg-background/90 px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+        Aura Dynamics
+      </div>
+    </div>
+  );
+}
 
 function Governance() {
   return (
     <>
       <PageHeader
         crumb="Governance & Advisors"
-        kicker="Corporate Leadership"
-        title="Corporate Governance & Leadership — Visionary Promoters, Proven Industry Guidance."
-        lead="Aura Dynamics Private Limited is governed by an unshakeable standard of statutory compliance, fiduciary responsibility, and long-term shareholder trust."
+        title="Corporate Governance & Executive Leadership."
+        sub="Anchored by visionary leadership, guided by industry veterans, and committed to institutional transparency."
       />
 
-      {/* ---------- EXECUTIVE LEADERSHIP SPOTLIGHT ---------- */}
-      <section className="relative border-b border-border bg-background py-20 lg:py-28">
-        <div className="container-x">
-          <div className="mb-10 inline-flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            <p className="kicker">Executive Leadership</p>
-          </div>
+      {/* EXECUTIVE LEADERSHIP SECTION */}
+      <Section>
+        <Kicker>Executive Board</Kicker>
+        <h2 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl">
+          Office of the Managing Director & Chief Executive Officer
+        </h2>
+        <p className="mt-4 max-w-3xl text-base text-muted-foreground">
+          The strategic roadmap, day-to-day operations, banking covenants, and technological
+          execution of {BRAND_NAME} are stewarded by our founding Managing Director and executive
+          officers.
+        </p>
 
-          <Reveal>
-            <article className="relative overflow-hidden rounded-2xl border border-navy/20 bg-card shadow-lg lg:grid lg:grid-cols-12">
-              <BorderBeam size={260} duration={8} colorFrom="var(--gold)" />
-              <Crosshair className="top-3 left-3" />
-              <Crosshair className="bottom-3 right-3" />
+        <div className="mt-12 grid gap-10 rounded-sm border border-border bg-card p-8 md:grid-cols-[300px_1fr] md:gap-14 md:p-12">
+          <Portrait title="Founder Managing Director & CEO" />
 
-              {/* MD Medallion / Profile Column */}
-              <div className="relative flex flex-col justify-between bg-navy p-10 text-primary-foreground lg:col-span-4 lg:p-12">
-                <div>
-                  <div className="flex h-24 w-24 items-center justify-center rounded-2xl border border-gold/40 bg-gold/10 font-serif text-4xl italic text-gold shadow-sm">
-                    MD
-                  </div>
-                  <div className="mt-8">
-                    <p className="font-mono text-xs text-gold uppercase tracking-wider">FOUNDING PROMOTER DIRECTOR</p>
-                    <h3 className="text-2xl font-bold tracking-tight text-primary-foreground mt-1">
-                      Managing Director &amp; CEO
-                    </h3>
-                    <p className="mt-1 text-xs text-ink-muted">Aura Dynamics Private Limited</p>
-                  </div>
-                </div>
-
-                <div className="mt-10 border-t border-ink-border pt-6 font-mono text-xs text-ink-muted">
-                  <p>OPERATIONAL AUTHORITY: FULL</p>
-                  <p className="mt-1">HEADQUARTERS: PATNA, BIHAR</p>
-                </div>
-              </div>
-
-              {/* Executive Biography & Mandate */}
-              <div className="p-10 lg:col-span-8 lg:p-14 flex flex-col justify-between">
-                <div>
-                  <h4 className="font-serif text-2xl text-navy italic">
-                    "Institutional discipline is not an afterthought — it is our chief competitive advantage."
-                  </h4>
-
-                  <p className="mt-6 text-base sm:text-lg leading-[1.8] text-muted-foreground">
-                    The Founding Managing Director &amp; CEO leads Aura Dynamics' PAN-India strategic vision and holds day-to-day executive authority across all corporate operations. Her mandate encompasses operational discipline, strategic banking relationships, and regulatory milestones — from incorporation and statutory compliance to the technological frameworks that will guide the enterprise through national scale.
-                  </p>
-                </div>
-
-                <div className="mt-10 flex flex-wrap gap-3 border-t border-border pt-8">
-                  {[
-                    "Day-to-day Executive Authority",
-                    "PAN-India Expansion Mandate",
-                    "Banking & Institutional Capital Relations",
-                    "Direct Statutory Compliance Oversight",
-                  ].map((badge) => (
-                    <span
-                      key={badge}
-                      className="inline-flex items-center gap-2 rounded-lg border border-gold/30 bg-gold/10 px-3.5 py-2 text-xs font-semibold text-navy font-mono"
-                    >
-                      <ShieldCheck className="h-4 w-4 text-gold shrink-0" />
-                      {badge}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </article>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ---------- BOARD OF ADVISORS & MENTORS ---------- */}
-      <section className="relative border-b border-border bg-card py-20 lg:py-28">
-        <div className="container-x">
-          <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <div className="flex flex-col justify-between">
             <div>
-              <div className="mb-3 inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-                <p className="kicker">Board of Advisors &amp; Mentors</p>
+              <div className="inline-flex items-center gap-2 rounded-xs border border-primary/20 bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
+                <Award className="h-3.5 w-3.5" />
+                <span>Founding Promoter & Director</span>
               </div>
-              <h2 className="display text-3xl sm:text-4xl lg:text-[44px] text-navy">
-                Proven guidance across scale, systems, and capital.
-              </h2>
+
+              <h3 className="mt-4 text-3xl font-medium tracking-tight text-foreground">
+                Managing Director & Chief Executive Officer
+              </h3>
+              <p className="mt-1 text-sm font-medium text-primary">
+                Aura Dynamics Enterprises Private Limited
+              </p>
+
+              <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
+                <p>
+                  As the founding promoter and chief executive, she spearheads the overall vision,
+                  institutional capital allocation, and expansion agenda for Aura Dynamics across
+                  Eastern India and the broader national landscape.
+                </p>
+                <p>
+                  Exercising sovereign operational control, she maintains direct oversight across
+                  our product engineering teams, strategic trade alliances, banking relationships,
+                  and regulatory filings. Her leadership stands as a prominent testament to
+                  high-impact women entrepreneurship emerging from Bihar to lead national technology
+                  transformation.
+                </p>
+              </div>
             </div>
-            <p className="max-w-md font-mono text-xs text-muted-foreground lg:text-right">
-              ADVISORY COUNCIL // IDENTITIES DISCLOSED UPON FORMAL BOARD INDUCTION
+
+            <div className="mt-8 grid grid-cols-2 gap-4 border-t border-border pt-6 sm:grid-cols-3">
+              <div>
+                <span className="text-xs uppercase tracking-wider text-muted-foreground">
+                  Executive Mandate
+                </span>
+                <p className="mt-1 text-sm font-semibold text-foreground">Strategic Stewardship</p>
+              </div>
+              <div>
+                <span className="text-xs uppercase tracking-wider text-muted-foreground">
+                  Operational Base
+                </span>
+                <p className="mt-1 text-sm font-semibold text-foreground">Patna Headquarters</p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <span className="text-xs uppercase tracking-wider text-muted-foreground">
+                  Jurisdiction
+                </span>
+                <p className="mt-1 text-sm font-semibold text-foreground">PAN-India Scale</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* ADVISORY BOARD SECTION */}
+      <section className="border-y border-border bg-surface/70 py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="max-w-2xl">
+            <Kicker>External Counsel & Mentorship</Kicker>
+            <h2 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl">
+              The Board of Advisors
+            </h2>
+            <p className="mt-4 text-base text-muted-foreground">
+              Our executive team is counseled by independent specialists with deep domain experience
+              across enterprise technology, scaled venture operations, and institutional compliance.
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {ADVISORS.map((a, i) => (
-              <SpotlightCard key={a.role} className="flex h-full flex-col p-8">
-                <Crosshair className="top-2 left-2" />
-                <div className="flex items-center justify-between border-b border-border pb-3">
-                  <span className="font-mono text-xs font-bold text-gold">ADV // 0{i + 1}</span>
-                  <span className="text-[10px] font-mono text-muted-foreground uppercase">ADVISORY BOARD</span>
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
+            {ADVISORY_BOARD.map((adv) => (
+              <SpotlightCard
+                key={adv.role}
+                spotlightColor="rgba(99, 102, 241, 0.12)"
+                borderGlowColor="rgba(99, 102, 241, 0.35)"
+                className="flex flex-col justify-between p-8"
+              >
+                <div>
+                  <div className="flex aspect-[16/10] w-full items-center justify-center rounded-xs border border-border/80 bg-surface/60">
+                    <UserRound className="h-12 w-12 text-muted-foreground/60" strokeWidth={1.25} />
+                  </div>
+
+                  <div className="mt-6">
+                    <span className="font-display text-xs font-semibold uppercase tracking-wider text-primary">
+                      {adv.pillar}
+                    </span>
+                    <h3 className="mt-2 text-xl font-medium text-foreground">{adv.role}</h3>
+                    <p className="mt-1 text-xs font-medium text-muted-foreground">
+                      {adv.experience}
+                    </p>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{adv.text}</p>
+                  </div>
                 </div>
 
-                <h3 className="mt-5 text-xl font-bold tracking-tight text-navy">{a.role}</h3>
-                <p className="mt-1 font-mono text-xs font-semibold text-gold">{a.exp}</p>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">{a.note}</p>
-
-                <div className="mt-6 flex flex-wrap gap-1.5 border-t border-border pt-4">
-                  {a.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-md bg-muted px-2.5 py-1 text-[11px] font-mono font-medium text-navy"
-                    >
-                      {t}
-                    </span>
-                  ))}
+                <div className="mt-8 border-t border-border/60 pt-4">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    Core Focus Areas:
+                  </span>
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {adv.expertise.map((exp) => (
+                      <span
+                        key={exp}
+                        className="rounded-xs border border-border bg-card px-2 py-0.5 text-[10px] font-medium text-foreground/80"
+                      >
+                        {exp}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </SpotlightCard>
             ))}
@@ -181,42 +222,40 @@ function Governance() {
         </div>
       </section>
 
-      {/* ---------- STATUTORY COMPLIANCE & LEGAL FRAMEWORK ---------- */}
-      <section className="relative bg-background py-20 lg:py-28">
-        <div className="container-x">
-          <div className="mb-12 inline-flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            <p className="kicker">Statutory Governance</p>
+      {/* CORPORATE GOVERNANCE CHARTER */}
+      <Section>
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
+          <div>
+            <Kicker>Institutional Code</Kicker>
+            <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl">
+              Corporate Governance Charter
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              Aura Dynamics upholds corporate governance standards consistent with Tier-1 holding
+              enterprises, ensuring investor protection, customer privacy, and employee dignity.
+            </p>
           </div>
 
-          <h2 className="display max-w-2xl text-3xl sm:text-4xl text-navy">
-            Institutional compliance built into the operational DNA.
-          </h2>
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            {COMPLIANCE_PILLARS.map((col) => (
-              <div key={col.title} className="relative rounded-xl border border-border bg-card p-6 shadow-sm">
-                <Crosshair className="top-2 right-2" />
-                <div className="flex items-center gap-2">
-                  <Scale className="h-4 w-4 text-gold shrink-0" />
-                  <h3 className="text-base font-bold text-navy">{col.title}</h3>
+          <div className="space-y-6">
+            {GOVERNANCE_CHARTER.map((item, idx) => (
+              <div
+                key={item.title}
+                className="rounded-sm border border-border bg-card p-6 shadow-xs"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="font-display text-sm font-semibold text-primary">
+                    0{idx + 1}.
+                  </span>
+                  <h3 className="text-lg font-medium text-foreground">{item.title}</h3>
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{col.desc}</p>
+                <p className="mt-3 pl-8 text-sm leading-relaxed text-muted-foreground">
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
-
-          <div className="mt-16 text-center">
-            <Magnet>
-              <Button asChild variant="navy" size="lg">
-                <Link to="/contact-us">
-                  Connect with Corporate Office <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </Button>
-            </Magnet>
-          </div>
         </div>
-      </section>
+      </Section>
     </>
   );
 }

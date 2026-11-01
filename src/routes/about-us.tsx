@@ -1,44 +1,88 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, CheckCircle2, Award, Sparkles, Building, Briefcase } from "lucide-react";
-import { PageHeader, Reveal, SplitSection } from "@/components/site/primitives";
-import { seo } from "@/lib/seo";
-import { BorderBeam, Crosshair, SpotlightCard, Magnet } from "@/components/reactbits";
-import { Button } from "@/components/ui/button";
+import {
+  ArrowRight,
+  ShieldCheck,
+  HeartHandshake,
+  Award,
+  Sparkles,
+  CheckCircle2,
+  Users,
+  Building,
+  Target,
+} from "lucide-react";
+import { Kicker, PageHeader, Reveal, Section } from "@/components/site/Layout";
+import { SpotlightCard } from "@/components/reactbits/SpotlightCard";
+import { CountUp } from "@/components/reactbits/CountUp";
+import { createPageMeta, BRAND_NAME } from "@/lib/seo";
+import local from "@/assets/local-professional.jpg";
 
 export const Route = createFileRoute("/about-us")({
   head: () =>
-    seo(
-      "About Us",
-      "Aura Dynamics is a women-led technology holding corporation architecting scalable, inclusive digital infrastructure for India.",
-      "/about-us",
-    ),
+    createPageMeta({
+      title: "About the Holding Corporation — Vision, Mission & Governance",
+      description:
+        "Learn about Aura Dynamics Enterprises: our institutional parent framework, proud women-led management, socio-economic gig empowerment, and long-term India vision.",
+      canonicalPath: "/about-us",
+    }),
   component: About,
 });
 
-const IMPACT = [
+const IMPACT_POINTS = [
   {
-    title: "Massive Livelihood Creation",
-    subtitle: "Formalizing Tier-2 & Tier-3 gig supply chains",
-    description:
-      "Direct onboarding of gig professionals, local delivery runners, and home service technicians into the formal digital economy — complete with transparent transaction records, scheduled digital payouts, and institutional financial access.",
-    stat: "100%",
-    statLabel: "Direct Payout Transparency",
+    title: "Massive Grassroots Livelihood Integration",
+    text: "Our digital aggregator platform is engineered to integrate, empower, and formalize thousands of skilled independent technicians, trade specialists, logistics operators, and local micro-entrepreneurs directly into the formal banking and digital commerce network.",
+    metric: "10,000+",
+    sub: "Targeted Regional Partners",
   },
   {
-    title: "Empowering Local Micro-Businesses",
-    subtitle: "Eliminating middleman extraction",
-    description:
-      "Removing monopolistic platform fees and predatory intermediary friction so local merchants, grocers, and regional vendors reach consumer demand directly, unlocking stable and predictable margins.",
-    stat: "0%",
-    statLabel: "Intermediary Markup",
+    title: "Bridging Tier-2 & Tier-3 Market Inefficiencies",
+    text: "By establishing high-speed, direct technological bridges between urban consumer demand and regional service providers, we eliminate predatory middleman fees, enabling higher take-home earnings and long-term financial stability.",
+    metric: "40%",
+    sub: "Average Income Enhancement",
   },
   {
-    title: "Skill Advancement & Digital Inclusion",
-    subtitle: "Codifying service quality standards",
-    description:
-      "Regular vernacular training modules and codified quality benchmarks that upskill grassroots partners, raising lifetime earning potential while guaranteeing dependable SLAs to citizens across emerging urban clusters.",
-    stat: "Vernacular",
-    statLabel: "Multi-Dialect Training",
+    title: "Structured Digital Literacy & Upskilling",
+    text: "We dismantle technological friction through localized multilingual interfaces, standard operating procedure training, digital payments orientation, and certified quality standardizations.",
+    metric: "100%",
+    sub: "Digitally Onboarded Workflows",
+  },
+];
+
+const VALUES = [
+  {
+    icon: ShieldCheck,
+    title: "Uncompromising Integrity & Compliance",
+    text: "Operating with institutional corporate discipline, statutory alignment under Indian enterprise legislation, and radical transparency in accounting and platform operations.",
+  },
+  {
+    icon: Target,
+    title: "Engineering Excellence & Agility",
+    text: "Building fault-tolerant, scalable software architectures capable of servicing high-frequency transactions with strict zero-trust security controls.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Inclusive Socio-Economic Stewardship",
+    text: "Measuring corporate success not merely by transaction volume, but by real-world economic prosperity created for regional workforces and emerging micro-economies.",
+  },
+  {
+    icon: Award,
+    title: "Long-Term Value Creation",
+    text: "Prioritizing durable architectural foundations, sustainable market economics, and customer trust over speculative short-term venture growth.",
+  },
+];
+
+const WOMEN_LEADERSHIP = [
+  {
+    title: "Operational Authority & Executive Direction",
+    text: "The day-to-day corporate administration, product engineering milestones, and strategic expansion plans are guided directly by our founding women promoters and executive board.",
+  },
+  {
+    title: "Empowering Regional Inclusion",
+    text: "We stand as an institutional beacon of progressive corporate stewardship, demonstrating that high-scale technology holding enterprises can originate and thrive in Bihar, fostering gender diversity at every leadership tier.",
+  },
+  {
+    title: "Sovereign Strategic Control",
+    text: "While welcoming institutional partnerships, cloud alliances, and strategic advisors, executive control and equity ownership remain anchored within our dedicated founding leadership.",
   },
 ];
 
@@ -47,226 +91,203 @@ function About() {
     <>
       <PageHeader
         crumb="About Us"
-        kicker="Who We Are"
-        title="About Aura Dynamics — Architecting Scalable, Inclusive Digital Infrastructure."
-        lead="Aura Dynamics Private Limited is a specialized technology holding corporation founded to build, capitalize, and govern the infrastructure powering essential digital services across India's next-wave urban markets."
+        title="Institutional Stewardship. Scalable Technology. Inclusive Prosperity."
+        sub="Aura Dynamics Enterprises Private Limited is architecting the digital infrastructure for India's emerging economic frontiers."
       />
 
-      {/* ---------- VISION & MISSION DUAL SHOWCASE ---------- */}
-      <section className="relative border-b border-border bg-background">
-        <div className="container-x grid gap-8 py-20 lg:grid-cols-12 lg:py-28">
-          <Reveal className="lg:col-span-7">
-            <div className="relative h-full overflow-hidden rounded-2xl border border-navy/20 bg-navy p-10 text-primary-foreground lg:p-14 shadow-lg">
-              <BorderBeam size={240} duration={9} colorFrom="var(--gold)" />
-              <Crosshair className="top-3 left-3" />
-              <Crosshair className="bottom-3 right-3" />
+      {/* VISION & MISSION ARCHITECTURAL DUAL CARDS */}
+      <Section>
+        <div className="grid border border-border bg-card lg:grid-cols-2">
+          <div className="border-b border-border p-8 md:p-14 lg:border-b-0 lg:border-r">
+            <Kicker>Long-Term Aspiration</Kicker>
+            <h2 className="mt-2 text-3xl font-medium tracking-tight text-foreground md:text-4xl">
+              Our Vision
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              To establish India's most dependable, scalable, and inclusive digital aggregator
+              ecosystem—seamlessly bridging the gap between high-demand urban markets and skilled
+              regional workforces across PAN-India, beginning with the vibrant economic corridor of
+              Eastern India.
+            </p>
+            <div className="mt-8 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
+              <Sparkles className="h-4 w-4" />
+              <span>National Integration Blueprint</span>
+            </div>
+          </div>
 
-              <div className="mb-4 inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-                <p className="kicker text-gold">Corporate Vision</p>
-              </div>
+          <div className="p-8 md:p-14">
+            <Kicker>Operational Mandate</Kicker>
+            <h2 className="mt-2 text-3xl font-medium tracking-tight text-foreground md:text-4xl">
+              Our Mission
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              To leverage mission-critical software engineering, ethical corporate governance, and
+              grassroots community empathy to simplify everyday commercial interactions, uplift
+              independent service providers, and construct enterprise-grade digital utilities.
+            </p>
+            <div className="mt-8 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
+              <CheckCircle2 className="h-4 w-4" />
+              <span>Empowerment Through Technology</span>
+            </div>
+          </div>
+        </div>
+      </Section>
 
-              <h2 className="display mt-4 text-3xl sm:text-4xl lg:text-[42px] leading-tight text-primary-foreground">
-                To become India's most trusted digital backbone for essential services — reaching every district with metropolitan-grade reliability.
+      {/* CORPORATE HOLDING & INCUBATION OVERVIEW */}
+      <section className="border-y border-border bg-surface/70 py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
+            <div>
+              <Kicker>Parent Entity Structure</Kicker>
+              <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl lg:text-[40px]">
+                The Holding Model: Purpose-Built for Long-Term Scale.
               </h2>
-
-              <p className="mt-8 text-base leading-relaxed text-ink-muted">
-                We believe geographic boundaries should never dictate technology access. A citizen in a Tier-3 district deserves the exact same latency, security, and consumer service standard as someone in a Tier-1 metro.
-              </p>
             </div>
-          </Reveal>
 
-          <Reveal delay={0.12} className="lg:col-span-5 flex flex-col justify-between">
-            <div className="relative rounded-2xl border border-border bg-card p-10 lg:p-12 shadow-sm">
-              <Crosshair className="top-3 left-3" />
-              <Crosshair className="bottom-3 right-3" />
-
-              <div className="mb-4 inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-                <p className="kicker">Institutional Mission</p>
-              </div>
-
-              <h3 className="display mt-4 text-2xl sm:text-3xl text-navy">
-                Disciplined engineering, fair economics, and relentless compliance.
-              </h3>
-
-              <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                To build, finance, and govern technology ventures that aggregate high-utility services, formalise local livelihoods, and operate under uncompromising standards of compliance and audit.
+            <div className="space-y-6 text-base leading-relaxed text-muted-foreground">
+              <p>
+                Aura Dynamics does not operate as a single consumer brand. Instead, we function as a
+                strategic parent holding company that builds, finances, and incubates specialized
+                technology platforms.
               </p>
-
-              <div className="mt-8 pt-6 border-t border-border flex items-center justify-between text-xs font-mono text-muted-foreground">
-                <span>PATNA HEADQUARTERS</span>
-                <span className="text-navy font-semibold">ESTABLISHED 2026</span>
+              <p>
+                Each incubated initiative benefits from shared corporate infrastructure: centralized
+                cybersecurity auditing, cloud architecture, compliance oversight, legal counsel, and
+                unified customer service protocols. This reduces operational overhead while ensuring
+                that every consumer touchpoint meets the highest enterprise standards.
+              </p>
+              <div className="pt-2">
+                <Link
+                  to="/ventures"
+                  className="inline-flex items-center gap-2 text-sm font-semibold tracking-wide text-primary hover:underline"
+                >
+                  Inspect our stealth-mode ventures portfolio <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* ---------- CORPORATE HOLDING FRAMEWORK ---------- */}
-      <SplitSection kicker="Corporate Holding Framework" title="A parent company built for disciplined scale.">
-        <div className="space-y-6 text-[17px] leading-[1.8] text-muted-foreground">
-          <p>
-            Aura Dynamics Private Limited serves as the parent holding entity for a portfolio of high-impact technology ventures. The holding company owns the shared technology backbone, sets risk and compliance policy, and allocates capital to ventures that meet defined milestones.
+      {/* WOMEN-LED ENTERPRISE CHARTER */}
+      <Section>
+        <div className="border-l-4 border-primary pl-6 md:pl-10">
+          <Kicker>Governance & Promoter Identity</Kicker>
+          <h2 className="max-w-3xl text-3xl font-medium leading-tight tracking-tight md:text-4xl lg:text-[42px]">
+            A Proud Women-Led and Women-Managed Corporate Enterprise.
+          </h2>
+          <p className="mt-4 max-w-2xl text-base text-muted-foreground">
+            Aura Dynamics is founded, directed, and operated under the strategic stewardship of
+            women leadership, reflecting an institutional commitment to diversity, resilience, and
+            equitable corporate governance.
           </p>
-          <p>
-            Every venture operates within a governance perimeter defined by the board: statutory audits, segregated financial reporting, data-protection controls, and periodic internal reviews.
-          </p>
-
-          <dl className="mt-10 divide-y divide-border border-y border-border">
-            {[
-              ["IP & Architecture Ownership", "Shared core codebases, zero-trust infrastructure, and proprietary patents held at the parent holding level."],
-              ["Venture Capital Governance", "Stage-gated capital allocations tied strictly to operational KPIs, SLA compliance, and regulatory milestones."],
-              ["Statutory Assurance", "Annual statutory audit oversight, formal internal risk controls, and automated compliance reporting."],
-            ].map(([term, detail]) => (
-              <div key={term} className="grid gap-2 py-5 sm:grid-cols-3">
-                <dt className="font-semibold text-navy text-[15px]">{term}</dt>
-                <dd className="sm:col-span-2 text-[15px] leading-relaxed text-muted-foreground">{detail}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
-      </SplitSection>
 
-      {/* ---------- WOMEN-LED & MANAGED EDITORIAL SPOTLIGHT ---------- */}
-      <section className="relative overflow-hidden border-b border-border bg-card py-20 lg:py-28">
-        <div className="container-x grid gap-14 lg:grid-cols-12 items-center">
-          <div className="lg:col-span-5">
-            <div className="mb-3 inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-              <p className="kicker">Editorial Spotlight</p>
+        <div className="mt-14 grid gap-8 md:grid-cols-3">
+          {WOMEN_LEADERSHIP.map((item, idx) => (
+            <SpotlightCard
+              key={item.title}
+              spotlightColor="rgba(99, 102, 241, 0.12)"
+              borderGlowColor="rgba(99, 102, 241, 0.35)"
+              className="p-8"
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-xs bg-primary/10 text-primary">
+                <Building className="h-5 w-5" />
+              </div>
+              <h3 className="mt-6 text-lg font-medium tracking-tight text-foreground">
+                {item.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+              <div className="mt-6 text-[11px] font-semibold uppercase tracking-wider text-primary">
+                Leadership Pillar 0{idx + 1}
+              </div>
+            </SpotlightCard>
+          ))}
+        </div>
+      </Section>
+
+      {/* SOCIO-ECONOMIC & EMPLOYMENT IMPACT SECTION */}
+      <section className="bg-navy text-navy-foreground">
+        <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
+            <div>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-emerald-400">
+                Livelihood Creation & Regional Upliftment
+              </p>
+              <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl lg:text-[40px]">
+                Catalyzing Employment Across India's Heartland.
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-navy-muted">
+                India's economic future is being forged in Tier-2 and Tier-3 urban centers. Our
+                technology aggregation architecture is designed to turn fragmented daily labor into
+                structured, dignified micro-entrepreneurship.
+              </p>
+
+              <div className="mt-10 overflow-hidden rounded-sm border border-navy-foreground/20">
+                <img
+                  src={local}
+                  alt="Local service technician utilizing digital aggregator software in Patna"
+                  loading="lazy"
+                  width={1280}
+                  height={1280}
+                  className="aspect-[4/3] w-full object-cover"
+                />
+              </div>
             </div>
-            <h2 className="display text-3xl sm:text-4xl lg:text-[44px] text-navy">
-              Proudly Women-Led &amp; Managed Enterprise
-            </h2>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              Aura Dynamics was founded on the conviction that inclusive governance produces resilient, long-term companies. Our founding women promoters and directors hold full operational control, executive governance, and daily strategic authority across the enterprise.
-            </p>
 
-            <div className="mt-8 flex flex-wrap gap-2.5">
-              {[
-                "100% Day-to-Day Operational Authority",
-                "Full Executive Governance",
-                "Direct Banking Relationships",
-                "Strategic Capital Allocation",
-              ].map((badge) => (
-                <span
-                  key={badge}
-                  className="inline-flex items-center gap-1.5 rounded-md border border-navy/15 bg-background px-3 py-1.5 font-mono text-xs font-medium text-navy"
+            <div className="space-y-8">
+              {IMPACT_POINTS.map((item, idx) => (
+                <div
+                  key={item.title}
+                  className="rounded-sm border border-navy-foreground/15 bg-navy/60 p-8 backdrop-blur-sm"
                 >
-                  <CheckCircle2 className="h-3.5 w-3.5 text-gold" />
-                  {badge}
-                </span>
+                  <div className="flex items-baseline justify-between border-b border-navy-foreground/10 pb-4">
+                    <span className="font-display text-xs font-semibold uppercase tracking-widest text-navy-muted">
+                      Impact Dimension 0{idx + 1}
+                    </span>
+                    <span className="font-display text-2xl font-bold text-primary-foreground">
+                      {item.metric}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-5 text-xl font-medium text-navy-foreground">{item.title}</h3>
+
+                  <p className="mt-3 text-sm leading-relaxed text-navy-muted">{item.text}</p>
+                </div>
               ))}
             </div>
           </div>
-
-          <Reveal className="lg:col-span-7">
-            <div className="relative overflow-hidden rounded-2xl border border-navy/15 bg-background p-10 lg:p-14 shadow-sm">
-              <BorderBeam size={200} duration={8} colorFrom="var(--gold)" />
-              <Crosshair className="top-3 left-3" />
-              <Crosshair className="bottom-3 right-3" />
-
-              <span className="absolute right-8 top-4 font-serif text-[130px] leading-none text-gold/15 select-none" aria-hidden="true">
-                “
-              </span>
-
-              <blockquote className="relative z-10 font-serif text-2xl sm:text-3xl leading-snug text-navy">
-                Diversity in leadership is not a statement of values alone — it is a discipline. It sharpens our judgement, strengthens our financial prudence, and keeps us building for the people we intend to serve.
-              </blockquote>
-
-              <div className="mt-10 flex flex-wrap items-end justify-between gap-6 border-t border-border pt-6">
-                <div>
-                  <p className="font-serif text-3xl italic text-gold">The Founding Promoters</p>
-                  <p className="mt-1 text-sm font-medium text-navy">Promoter Directors, Aura Dynamics Private Limited</p>
-                  <p className="text-xs font-mono text-muted-foreground">CIN: U72900BR2026PTCXXXXXX · Patna, Bihar</p>
-                </div>
-
-                {/* Institutional Gold Seal Badge */}
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-gold/60 bg-gold/10 font-serif text-xs font-bold uppercase tracking-wider text-gold">
-                  SEAL · 26
-                </div>
-              </div>
-            </div>
-          </Reveal>
         </div>
       </section>
 
-      {/* ---------- SOCIO-ECONOMIC IMPACT DEEP DIVE ---------- */}
-      <SplitSection kicker="Socio-Economic Impact" title="Large-scale employment, by design.">
-        <div className="space-y-6">
-          {IMPACT.map((item, idx) => (
-            <Reveal key={item.title}>
-              <div className="relative overflow-hidden rounded-xl border border-border bg-card p-8">
-                <Crosshair className="top-2 right-2" />
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 border-b border-border pb-4">
-                  <div className="flex items-center gap-4">
-                    <span className="font-mono text-sm font-bold text-gold">0{idx + 1}</span>
-                    <div>
-                      <h3 className="text-xl font-bold tracking-tight text-navy">{item.title}</h3>
-                      <p className="text-xs font-mono text-muted-foreground">{item.subtitle}</p>
-                    </div>
-                  </div>
-                  <div className="sm:text-right">
-                    <span className="font-mono text-lg font-bold text-gold">{item.stat}</span>
-                    <p className="text-[11px] text-muted-foreground uppercase">{item.statLabel}</p>
-                  </div>
-                </div>
-                <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
-                  {item.description}
-                </p>
+      {/* CORE VALUES GRID */}
+      <Section>
+        <div className="max-w-2xl">
+          <Kicker>Institutional Ethics</Kicker>
+          <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
+            Our Guiding Corporate Values
+          </h2>
+          <p className="mt-4 text-base text-muted-foreground">
+            The principles that govern our engineering decisions, corporate governance, and
+            community relationships.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {VALUES.map((val) => (
+            <div
+              key={val.title}
+              className="group rounded-sm border border-border bg-card p-7 transition-all hover:border-primary/50 hover:shadow-sm"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-sm bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <val.icon className="h-6 w-6" strokeWidth={1.75} />
               </div>
-            </Reveal>
+              <h3 className="mt-6 text-lg font-medium text-foreground">{val.title}</h3>
+              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{val.text}</p>
+            </div>
           ))}
         </div>
-      </SplitSection>
-
-      {/* ---------- CORE VALUES ---------- */}
-      <section className="relative border-b border-border bg-background py-20 lg:py-28">
-        <div className="container-x">
-          <div className="mb-12 inline-flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            <p className="kicker">Core Values</p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                id: "01",
-                title: "Integrity & Transparency",
-                body: "Clear books, honest disclosure, and governance decisions that withstand any statutory audit without compromise.",
-              },
-              {
-                id: "02",
-                title: "Agility & Innovation",
-                body: "Ship carefully, test rigorously in sandboxes, learn from edge behavior, and harden technology backbones for decades.",
-              },
-              {
-                id: "03",
-                title: "Economic Empowerment",
-                body: "Measure corporate success by sustainable livelihoods created and local vendors uplifted, not vanity GMV alone.",
-              },
-            ].map((v) => (
-              <SpotlightCard key={v.id} className="p-8">
-                <Crosshair className="top-2 left-2" />
-                <span className="font-mono text-xs font-bold text-gold">VAL // {v.id}</span>
-                <h3 className="display mt-6 text-2xl text-navy">{v.title}</h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{v.body}</p>
-              </SpotlightCard>
-            ))}
-          </div>
-
-          <div className="mt-16 text-center">
-            <Magnet>
-              <Button asChild variant="navy" size="lg">
-                <Link to="/ventures">
-                  Explore Strategic Ventures <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </Button>
-            </Magnet>
-          </div>
-        </div>
-      </section>
+      </Section>
     </>
   );
 }

@@ -4,14 +4,26 @@ import { describe, expect, it } from "vitest";
 
 import { routeTree } from "@/routeTree.gen";
 
-// Match routes without running loaders or rendering: loaders may need a server or
-// network the test run lacks, and jsdom never loads the stylesheets React waits on.
-describe("App routing", () => {
-  it("matches a page for / instead of falling back to not found", () => {
-    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+describe("App routing and corporate pages", () => {
+  const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
 
-    const matches = router.matchRoutes("/");
+  const routesToTest = [
+    { path: "/", id: "/" },
+    { path: "/about-us", id: "/about-us" },
+    { path: "/ventures", id: "/ventures" },
+    { path: "/governance", id: "/governance" },
+    { path: "/contact-us", id: "/contact-us" },
+    { path: "/privacy-policy", id: "/privacy-policy" },
+    { path: "/terms-of-service", id: "/terms-of-service" },
+    { path: "/copyright", id: "/copyright" },
+  ];
 
-    expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
+  routesToTest.forEach(({ path, id }) => {
+    it(`resolves ${path} to valid route without falling back to root/not-found`, () => {
+      const matches = router.matchRoutes(path);
+      expect(matches.length).toBeGreaterThan(0);
+      expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
+      expect(matches.at(-1)?.pathname).toBe(id);
+    });
   });
 });
