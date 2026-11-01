@@ -121,9 +121,15 @@
 @keyframes dash {
   to { stroke-dashoffset: -24; }
 }
+@keyframes border-beam {
+  100% {
+    offset-distance: 100%;
+  }
+}
 @utility animate-radar { animation: radar 2.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite; }
 @utility animate-node { animation: node-pulse 2.8s ease-in-out infinite; }
 @utility animate-dash { animation: dash 1.6s linear infinite; }
+@utility animate-border-beam { animation: border-beam var(--duration, 8s) infinite linear; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
